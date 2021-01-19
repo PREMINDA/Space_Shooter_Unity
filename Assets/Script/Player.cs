@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             fireLaser();
+            dualLacer();
         }
 
     }
@@ -62,7 +63,12 @@ public class Player : MonoBehaviour
     {
         
             _canFire = Time.time + _fireRate;
-            Instantiate(laserPrefab, new Vector3(transform.position.x, transform.position.y + 0.75f, 0), Quaternion.identity);
+            Instantiate(laserPrefab, new Vector3(transform.position.x-0.2f, transform.position.y + 0.75f, 0), Quaternion.identity);
         
+    }
+    void dualLacer()
+    {
+        _canFire = Time.time + _fireRate;
+        Instantiate(laserPrefab, new Vector3(transform.position.x+0.2f, transform.position.y + 0.75f, 0), Quaternion.identity);
     }
 }
