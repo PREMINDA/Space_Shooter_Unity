@@ -6,13 +6,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float _speed = 3.5f;
+    public float _speed = 8f;
     public GameObject laserPrefab;
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1f;
+    private int lives = 0;
 
-    
+
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
         }
         else if (transform.position.y <= -3)
         {
-            
+            transform.position = new Vector3(transform.position.x, -3, 0);
         }
 
         //transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, 2, -2), 0);
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(11.24f, transform.position.y, 0);
         }
     }
+
     void fireLaser()
     {
         
@@ -70,5 +72,15 @@ public class Player : MonoBehaviour
     {
         _canFire = Time.time + _fireRate;
         Instantiate(laserPrefab, new Vector3(transform.position.x+0.2f, transform.position.y + 0.75f, 0), Quaternion.identity);
+    }
+
+    public void Damage()
+    {
+        lives++;
+        if(lives == 3)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }
