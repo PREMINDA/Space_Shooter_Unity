@@ -10,8 +10,13 @@ public class Player : MonoBehaviour
     public GameObject laserPrefab;
     [SerializeField]
     private float _fireRate = 0.5f;
+    private float _trple_fireRate = 0.2f;
     private float _canFire = -1f;
     private int lives = 0;
+    public GameObject triple_laser;
+    private bool ispowerUp = false;
+    
+    
 
 
     void Start()
@@ -26,11 +31,21 @@ public class Player : MonoBehaviour
         calculateMove();
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            fireLaser();
-            dualLacer();
+            if (ispowerUp)
+            {
+                
+                triplelaser();
+            }
+            else
+            {
+                fireLaser();
+
+            }
+
         }
 
     }
+    
 
     void calculateMove()
     {
@@ -61,17 +76,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void fireLaser()
+    private void fireLaser()
     {
         
             _canFire = Time.time + _fireRate;
             Instantiate(laserPrefab, new Vector3(transform.position.x-0.2f, transform.position.y + 0.75f, 0), Quaternion.identity);
         
     }
-    void dualLacer()
+    private void triplelaser()
     {
-        _canFire = Time.time + _fireRate;
-        Instantiate(laserPrefab, new Vector3(transform.position.x+0.2f, transform.position.y + 0.75f, 0), Quaternion.identity);
+        _canFire = Time.time + _trple_fireRate;
+        Instantiate(triple_laser, transform.position, Quaternion.identity);
     }
 
     public void Damage()
@@ -82,5 +97,15 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         }
         
+    }
+    public void change_gun_state()
+    {
+        ispowerUp = true;
+        StartCoroutine(WaitAndPrint());
+    }
+    private IEnumerator WaitAndPrint()
+    {
+        yield return new WaitForSeconds(10.0f);
+        ispowerUp = false;
     }
 }

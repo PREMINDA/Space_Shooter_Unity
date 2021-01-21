@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     private IEnumerator coroutine;
     [SerializeField]
-    private float _speed = 6.0f;
+    private float _speed = 5.0f;
+
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
 
         if(other.tag == "Player")
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser")
         {
             Destroy(this.gameObject);
+            
         }
 
     }
