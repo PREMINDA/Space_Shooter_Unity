@@ -155,6 +155,8 @@ MonoBehaviour:
   _enemyContainer: {fileID: 1749004395}
   _3laserPrefab: {fileID: 1374641441274829625, guid: 293774b3ba19a454fb69ddbe9f78f78d,
     type: 3}
+  _sppedup: {fileID: 1105958098887077344, guid: 2845c835825fc824f8b973f19806c4ba,
+    type: 3}
 --- !u!4 &628725509
 Transform:
   m_ObjectHideFlags: 0

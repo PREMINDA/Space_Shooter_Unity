@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator WaitAndPrint()
     {
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(30.0f);
         Destroy(gameObject);
     }
 
