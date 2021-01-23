@@ -14,7 +14,9 @@ public class UImanager : MonoBehaviour
     [SerializeField]
     private Text _Gameover;
     private Game_state _Gamestate;
- 
+    [SerializeField]
+    private Text _Restart;
+
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class UImanager : MonoBehaviour
 
         _Liveimge.sprite = _livesimage[3];
         _Gameover.gameObject.SetActive(false);
+        _Restart.gameObject.SetActive(false);
         _Gamestate = GameObject.Find("Game_state").GetComponent<Game_state>();
 
     }
@@ -43,6 +46,7 @@ public class UImanager : MonoBehaviour
     public void gameover()
     {
         _Gameover.gameObject.SetActive(true);
+        _Restart.gameObject.SetActive(true);
         _Gamestate.Gameover();
         StartCoroutine(blink());
         

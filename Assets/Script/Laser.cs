@@ -5,22 +5,23 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float _speed= 15f;
+    public float _speed = 15f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(0,1,0) * _speed * Time.deltaTime);
+        transform.Translate(new Vector3(0, 1, 0) * _speed * Time.deltaTime);
 
-        if(transform.position.y > 8f) {
+        if (transform.position.y > 8f)
+        {
 
             OnBecameInvisible();
 
-            if(transform.parent != null)
+            if (transform.parent != null)
             {
                 Destroy(transform.parent.gameObject);
             }
@@ -34,7 +35,7 @@ public class Laser : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
             Destroy(this.gameObject);
         }

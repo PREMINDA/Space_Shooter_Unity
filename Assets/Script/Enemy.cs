@@ -8,14 +8,18 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float _speed = 5.0f;
     private Player _player;
-    
+    private Animator anim;
 
-    
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         
     StartCoroutine(WaitAndPrint());
+        anim = GetComponent<Animator> ();
       
     }
 
@@ -35,7 +39,10 @@ public class Enemy : MonoBehaviour
             Player playerobj = other.transform.GetComponent<Player>();
             if(playerobj != null)
             {
-                Destroy(this.gameObject);
+                anim.SetTrigger("EnemyDeath");
+
+                Destroy(this.gameObject, 2.2f);
+                _speed = 0;
             }
             other.transform.GetComponent<Player>().Damage();
         }
@@ -45,8 +52,12 @@ public class Enemy : MonoBehaviour
 
             if (_player != null)
             {
-                Destroy(this.gameObject);
+                anim.SetTrigger("EnemyDeath");
+
+                Destroy(this.gameObject, 2.2f);
+                _speed = 0;
                 _player.increase_score();
+               
             }
 
         }
@@ -60,16 +71,20 @@ public class Enemy : MonoBehaviour
     }
 
     void enemyMove() {
+        Vector3 derection;
 
-        Vector3 derection = new Vector3(0, -1, 0);
+       
+           derection = new Vector3(0, -1, 0);
 
-        transform.Translate(derection * _speed * Time.deltaTime);
+            transform.Translate(derection * _speed * Time.deltaTime);
 
-        if (transform.position.y < -5.7f)
-        {
-            transform.position = new Vector3(Random.Range(-8f,8f), 8, 0);
-        }
+            if (transform.position.y < -5.7f)
+            {
+                transform.position = new Vector3(Random.Range(-8f, 8f), 8, 0);
+            }
+      
     }
+   
 
     
 
