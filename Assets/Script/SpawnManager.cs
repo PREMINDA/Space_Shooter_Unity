@@ -16,6 +16,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _sppedup;
     [SerializeField]
     private GameObject _shild_up;
+    
+
 
 
 
@@ -34,7 +36,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
 
     }
 

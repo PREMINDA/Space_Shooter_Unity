@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3355130088865440853}
   - component: {fileID: -2487939300866897295}
   - component: {fileID: -7408518281048357082}
-  - component: {fileID: 6487601391058798771}
+  - component: {fileID: 260001064}
   m_Layer: 0
   m_Name: shild_up
   m_TagString: Untagged
@@ -144,7 +144,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!95 &6487601391058798771
+--- !u!95 &260001064
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5580592305020546722}
   - component: {fileID: 3698295945257316590}
   - component: {fileID: -2852679460346501922}
-  - component: {fileID: 9189735625420488941}
+  - component: {fileID: 228403621}
   m_Layer: 0
   m_Name: speedup
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10eccacd2ed9e6f4f9595acc839ce128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &9189735625420488941
+--- !u!95 &228403621
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

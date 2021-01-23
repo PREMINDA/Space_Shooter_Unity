@@ -13,6 +13,7 @@ public class UImanager : MonoBehaviour
     private Image _Liveimge;
     [SerializeField]
     private Text _Gameover;
+    private Game_state _Gamestate;
  
 
     void Start()
@@ -21,6 +22,7 @@ public class UImanager : MonoBehaviour
 
         _Liveimge.sprite = _livesimage[3];
         _Gameover.gameObject.SetActive(false);
+        _Gamestate = GameObject.Find("Game_state").GetComponent<Game_state>();
 
     }
 
@@ -41,6 +43,18 @@ public class UImanager : MonoBehaviour
     public void gameover()
     {
         _Gameover.gameObject.SetActive(true);
+        _Gamestate.Gameover();
+        StartCoroutine(blink());
+        
     }
-   
+    private IEnumerator blink()
+    {
+        while (true)
+        {
+            _Gameover.text = "GAME OVER";
+            yield return new WaitForSeconds(0.5f);
+            _Gameover.text = "";
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 }

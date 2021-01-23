@@ -152,5 +152,9 @@ public class Player : MonoBehaviour
         _score += 10;
         _uimanager.updatescore(_score);
     }
+    public void resetlive()
+    {
+        lives = 3;
+    }
    
 }
