@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private float _fireRate = 0.5f;
     private float _trple_fireRate = 0.2f;
     private float _canFire = -1f;
-    private int lives = 0;
+    private int lives = 3;
     public GameObject triple_laser;
     private bool ispowerUp = false;
     private bool isShildavailable = false;
@@ -109,10 +109,12 @@ public class Player : MonoBehaviour
     {
         if (!isShildavailable)
         {
-            lives++;
-            if (lives == 3)
+            lives--;
+            _uimanager.updatelives(lives);
+            if (lives == 0)
             {
                 Destroy(this.gameObject);
+                _uimanager.gameover();
             }
         }
         
