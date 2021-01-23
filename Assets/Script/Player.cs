@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class Player : MonoBehaviour
     public GameObject triple_laser;
     private bool ispowerUp = false;
     private bool isShildavailable = false;
-   
+    private int _score;
+    private UImanager _uimanager;
+
 
 
 
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+        _uimanager = GameObject.Find("Canvas").GetComponent<UImanager>();
         
     }
 
@@ -141,4 +145,10 @@ public class Player : MonoBehaviour
 
 
     }
+    public void increase_score()
+    {
+        _score += 10;
+        _uimanager.updatescore(_score);
+    }
+   
 }
