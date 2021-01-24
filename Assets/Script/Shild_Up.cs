@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Shild_Up : MonoBehaviour
 {
+
+    [SerializeField]
+    private AudioClip aud_clip;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(wait_for_get());
+       
 
     }
 
@@ -23,6 +27,7 @@ public class Shild_Up : MonoBehaviour
             Player obj = collision.transform.GetComponent<Player>();
             if (obj != null)
             {
+                AudioSource.PlayClipAtPoint(aud_clip, transform.position);
                 StartCoroutine(waitf_for_destroy());
                 collision.transform.GetComponent<Player>().shildup();
             }
@@ -31,6 +36,7 @@ public class Shild_Up : MonoBehaviour
     private IEnumerator waitf_for_destroy()
     {
         yield return new WaitForSeconds(0.2f);
+       
         Destroy(this.gameObject);
     }
 

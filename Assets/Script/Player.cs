@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     private bool isShildavailable = false;
     private int _score;
     private UImanager _uimanager;
+    [SerializeField]
+    private AudioSource aud_s1;
 
 
 
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0, 0, 0);
         _uimanager = GameObject.Find("Canvas").GetComponent<UImanager>();
+        aud_s1 = GetComponent<AudioSource>();
         
     }
 
@@ -44,10 +47,12 @@ public class Player : MonoBehaviour
             {
                 
                 triplelaser();
+                aud_s1.Play();
             }
             else
             {
                 fireLaser();
+                aud_s1.Play();
 
             }
 
@@ -110,6 +115,7 @@ public class Player : MonoBehaviour
         if (!isShildavailable)
         {
             lives--;
+            damage_show(lives);
             _uimanager.updatelives(lives);
             if (lives == 0)
             {
@@ -155,6 +161,16 @@ public class Player : MonoBehaviour
     public void resetlive()
     {
         lives = 3;
+    }
+    public void damage_show(int a)
+    {
+        if (a == 2)
+        {
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }else if(a == 1)
+        {
+            gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
     }
    
 }

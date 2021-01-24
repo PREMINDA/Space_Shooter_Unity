@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class T_power : MonoBehaviour
 {
+
+    [SerializeField]
+    private AudioClip aud_clip;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(WaitAndPrint());
+   
     }
 
     // Update is called once per frame
@@ -22,6 +26,7 @@ public class T_power : MonoBehaviour
             Player playerobj = collision.transform.GetComponent<Player>();
            if(playerobj != null)
             {
+                AudioSource.PlayClipAtPoint(aud_clip, transform.position);
                 StartCoroutine(destroy());
                collision.transform.GetComponent<Player>().change_gun_state();
 
@@ -40,6 +45,7 @@ public class T_power : MonoBehaviour
     private IEnumerator destroy()
     {
         yield return new WaitForSeconds(0.1f);
+        
         Destroy(this.gameObject);
         
     }

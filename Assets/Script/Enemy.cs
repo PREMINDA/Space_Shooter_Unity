@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private float _speed = 5.0f;
     private Player _player;
     private Animator anim;
+    private AudioSource aud;
 
 
 
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
         
     StartCoroutine(WaitAndPrint());
         anim = GetComponent<Animator> ();
+        aud = GetComponent<AudioSource>();
       
     }
 
@@ -40,7 +42,7 @@ public class Enemy : MonoBehaviour
             if(playerobj != null)
             {
                 anim.SetTrigger("EnemyDeath");
-
+                aud.Play();
                 Destroy(this.gameObject, 2.2f);
                 _speed = 0;
             }
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour
             if (_player != null)
             {
                 anim.SetTrigger("EnemyDeath");
-
+                aud.Play();
                 Destroy(this.gameObject, 2.2f);
                 _speed = 0;
                 _player.increase_score();
@@ -81,6 +83,7 @@ public class Enemy : MonoBehaviour
             if (transform.position.y < -5.7f)
             {
                 transform.position = new Vector3(Random.Range(-8f, 8f), 8, 0);
+            
             }
       
     }

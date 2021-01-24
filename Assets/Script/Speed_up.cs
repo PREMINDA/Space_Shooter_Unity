@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class Speed_up : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip aud_clip;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(wait_for_get());
+       
+      
 
     }
 
@@ -23,6 +30,7 @@ public class Speed_up : MonoBehaviour
             Player playerobj = collision.transform.GetComponent<Player>();
             if(playerobj != null)
             {
+                AudioSource.PlayClipAtPoint(aud_clip, transform.position);
                 StartCoroutine(waitf_for_destroy());
                 collision.transform.GetComponent<Player>().speed_max();
             }
@@ -32,6 +40,7 @@ public class Speed_up : MonoBehaviour
     private IEnumerator waitf_for_destroy()
     {
         yield return new WaitForSeconds(0.2f);
+
         Destroy(this.gameObject);
     }
     private IEnumerator wait_for_get()
